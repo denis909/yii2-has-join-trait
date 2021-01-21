@@ -7,13 +7,16 @@ trait HasJoinTrait
 
     public function hasJoin(string $name) : bool
     {
-        foreach($this->joinWith as $config)
+        if (is_array($this->joinWith))
         {
-            list($with, $eagerLoading, $joinType) = $config;
-
-            if (array_key_exists($name, $with))
+            foreach($this->joinWith as $config)
             {
-                return true;
+                list($with, $eagerLoading, $joinType) = $config;
+
+                if (array_key_exists($name, $with))
+                {
+                    return true;
+                }
             }
         }
 
