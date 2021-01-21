@@ -7,7 +7,7 @@ trait HasJoinTrait
 
     public function hasJoin(string $name) : bool
     {
-        if (is_array($this->joinWith))
+        if ($this->joinWith)
         {
             foreach($this->joinWith as $config)
             {
